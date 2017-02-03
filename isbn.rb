@@ -13,4 +13,12 @@ def isbn_dash_deleter(isbn_num)
 		return new_num 
 
 end
+		
+def isbn_dash_space_deletion(isbn_num)
+		new_num = isbn_num.delete" " 
+		return new_num
+
+end
+
+
 

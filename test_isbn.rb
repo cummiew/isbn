@@ -18,4 +18,8 @@ require_relative "isbn.rb"
 		
 		end
 
+		def test_for_deletion_of_spaces_between_num
+			assert_equal("12345",isbn_dash_space_deletion("1 2 3 4 5"))
+
+		end
 	end
