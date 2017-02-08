@@ -15,11 +15,22 @@ require_relative "isbn.rb"
 
 		def test_for_deletion_of_dashes
 			assert_equal("12345",isbn_dash_deleter("1-2-3-4-5-"))
-		
+
+		end 
+
+
+		def test_sum_success_to_num
+			assert_equal(true,isbn_sum_10_chkr?("0471958697"))
+
 		end
 
-		def test_for_deletion_of_spaces_between_num
-			assert_equal("12345",isbn_dash_space_deletion("1 2 3 4 5"))
+		def test_sum_success_to_num1
+			assert_equal(true,isbn_sum_10_chkr?("877195869x"))
 
 		end
-	end
+      	
+      	def test_sum_success_to_num2
+			assert_equal(true,isbn_sum_10_chkr?("877195869X"))
+
+		end	
+end
