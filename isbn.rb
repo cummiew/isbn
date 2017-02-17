@@ -1,18 +1,42 @@
-def isbn_10_chkr(isbn_num)
-		if ((isbn_num.length < 10) || (isbn_num.length > 10))
-
-			return false
-		else
-			return true
-
-		end
-end
-
 def isbn_dash_deleter(isbn_num)
-			new_num = isbn_num.delete"-"
-			return new_num 
+# Step 1: This will create a new array, named 'refreshed', without any char that's not an integer or an 'x':
+
+## Step 2: then it will call function "isbn_10_chkr", determining if there are present: a)less than (automatically invalid); b) equal to (further examination by check_x(refreshed) required); or c) greater than 10 characters (further examination by check_the_sum_greater_than_ten(refreshed) required): 
+
+	isbn_string.upcase!
+	clay = isbn_string.split("")
+	refreshed=[]
+
+	clay.each do |filter|
+
+		if  filter == "0" || filter == "1" || filter == "2" || filter == "3" || filter == "4" || filter == "5" || filter == "6" || filter == "7" || filter == "8" || filter == "9" || filter =="X" || filter =="x"
+
+			refreshed.push(filter)
+		end
+
+	end
 
 end
+
+def isbn_10_chkr(isbn_num)
+	if refreshed.length<10
+		invalid_isbn(refreshed)
+	elsif refreshed.length>10
+		refreshed=refreshed.join("")
+		check_the_sum_greater_than_ten(refreshed)
+	elsif refreshed.length==10
+		check_x(refreshed)
+	end
+end
+
+def check_x(refreshed)
+    if refreshed.include?("X") && (refreshed.index("X") == refreshed[9])
+    	invalid_isbn(refreshed)
+    else
+		check_the_sum(refreshed)
+	end
+end
+
 def	check_the_sum_greater_than_ten(refreshed)
 
 	original=refreshed
